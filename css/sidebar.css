@@ -1,0 +1,201 @@
+.sidebar-container {
+    position: relative;
+    transition: width 0.3s ease;
+    width: 250px;
+    overflow: hidden;
+}
+
+.sidebar-container.collapsed {
+    width: 60px;
+}
+
+.sidebar {
+    height: 100vh;
+    background-color: #343a40;
+    color: white;
+    padding: 0;
+    width: 250px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    /* 重要：移除fixed定位 */
+    position: relative;
+}
+
+.sidebar-header {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #212529;
+}
+
+.sidebar-header h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-menu li i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-menu li:hover {
+    background-color: #2c3237;
+    border-left-color: #007bff;
+}
+
+.sidebar-menu li.active {
+    background-color: #2c3237;
+    border-left-color: #007bff;
+}
+
+.submenu {
+    list-style: none;
+    padding-left: 25px;
+    margin-top: 10px;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.sidebar-menu li:hover .submenu,
+.sidebar-menu li.active .submenu {
+    display: block;
+}
+
+.submenu li {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+}
+
+.submenu li:hover,
+.submenu li.active {
+    background-color: #343a40;
+}
+
+.submenu li.active {
+    background-color: #2c3237;
+    color: white;
+    border-left: 3px solid #0d6efd;
+}
+
+/* 大屏幕设备 (>= 1200px) */
+@media (min-width: 1200px) {
+    .sidebar {
+        width: 250px;
+    }
+}
+
+/* 中等屏幕设备 (992px-1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .sidebar {
+        width: 220px;
+    }
+}
+
+/* 小屏幕设备 (768px-991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .sidebar-menu li {
+        padding: 10px 12px;
+    }
+}
+
+/* 超小屏幕设备 (< 768px) */
+@media (max-width: 767px) {
+    .sidebar {
+        width: 250px;
+        left: -250px;
+        z-index: 1050;
+        box-shadow: none;
+    }
+
+    .sidebar.show {
+        left: 0;
+        box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .sidebar-menu li {
+        padding: 15px;
+    }
+
+    .submenu li {
+        padding: 12px 10px;
+    }
+}
+
+/* 折叠侧边栏样式 */
+.sidebar-collapsed {
+    width: 60px;
+}
+
+.sidebar-collapsed .sidebar-header h3 {
+    display: none;
+}
+
+.sidebar-collapsed .sidebar-menu li span {
+    display: none;
+}
+
+.sidebar-collapsed .submenu {
+    position: absolute;
+    left: 60px;
+    top: 0;
+    background-color: #343a40;
+    width: 180px;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 0 4px 4px 0;
+}
+
+.sidebar-collapsed .sidebar-menu li:hover .submenu {
+    display: block;
+}
+
+.sidebar-menu>li {
+    position: relative;
+}
+
+.sidebar-menu>li>span::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sidebar-menu>li:has(.submenu)>span::after {
+    content: '\F282';
+    font-family: 'Bootstrap Icons';
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
