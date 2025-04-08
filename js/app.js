@@ -164,91 +164,73 @@ function loadPage(page) {
 
 // 添加侧边栏切换功能
 function setupSidebarToggle() {
-    const toggleBtn = document.getElementById('sidebar-toggle');
+    const sidebarContainer = document.getElementById('sidebar-container');
+    const sidebarCollapseBtn = document.getElementById('sidebar-collapse-btn');
     const sidebar = document.querySelector('.sidebar');
+    const toggleBtn = document.getElementById('sidebar-toggle');
     const mainContent = document.querySelector('.main-content');
+    const backdrop = document.querySelector('.sidebar-backdrop');
 
-    // 创建遮罩元素
-    let backdrop = document.querySelector('.sidebar-backdrop');
-    if (!backdrop) {
-        backdrop = document.createElement('div');
-        backdrop.className = 'sidebar-backdrop';
-        document.body.appendChild(backdrop);
-    }
-
-    // 添加折叠按钮到侧边栏头部（只在大屏幕显示）
-    let collapseBtn = document.querySelector('.sidebar-collapse-btn');
-    if (!collapseBtn) {
-        collapseBtn = document.createElement('button');
-        collapseBtn.className = 'btn btn-sm btn-dark sidebar-collapse-btn d-none d-md-block';
-        collapseBtn.innerHTML = '<i class="bi bi-chevron-left"></i>';
-        collapseBtn.style.position = 'absolute';
-        collapseBtn.style.right = '10px';
-        collapseBtn.style.top = '15px';
-
-        const sidebarHeader = document.querySelector('.sidebar-header');
-        sidebarHeader.style.position = 'relative';
-        sidebarHeader.appendChild(collapseBtn);
-
-        // 折叠/展开侧边栏
-        collapseBtn.addEventListener('click', function () {
+    // 折叠/展开按钮点击事件
+    if (sidebarCollapseBtn) {
+        sidebarCollapseBtn.addEventListener('click', function () {
+            sidebarContainer.classList.toggle('collapsed');
             sidebar.classList.toggle('sidebar-collapsed');
-            if (sidebar.classList.contains('sidebar-collapsed')) {
-                this.innerHTML = '<i class="bi bi-chevron-right"></i>';
-            } else {
-                this.innerHTML = '<i class="bi bi-chevron-left"></i>';
-            }
+
+            // 图表重绘
+            setTimeout(function () {
+                uniformChartSizes();
+            }, 300);
         });
     }
 
-    // 移动设备上的切换按钮
+    // 小屏幕下的菜单按钮
     if (toggleBtn) {
         toggleBtn.addEventListener('click', function () {
-            sidebar.classList.toggle('show');
-            backdrop.classList.toggle('show');
+            if (window.innerWidth < 768) {
+                sidebar.classList.toggle('show');
 
-            // 在较大屏幕上，还可以移动主内容区
-            if (window.innerWidth >= 576) {
-                mainContent.classList.toggle('shifted');
-            }
-        });
+                // 创建遮罩(如果不存在)
+                if (!backdrop) {
+                    const newBackdrop = document.createElement('div');
+                    newBackdrop.className = 'sidebar-backdrop';
+                    document.body.appendChild(newBackdrop);
 
-        // 点击遮罩关闭侧边栏
-        backdrop.addEventListener('click', function () {
-            sidebar.classList.remove('show');
-            backdrop.classList.remove('show');
-            mainContent.classList.remove('shifted');
-        });
+                    newBackdrop.addEventListener('click', function () {
+                        sidebar.classList.remove('show');
+                        this.classList.remove('show');
+                    });
+                }
 
-        // 窗口大小改变时重绘所有图表
-        window.addEventListener('resize', function () {
-            // 延迟执行以避免频繁调用
-            if (this.resizeTimeout) clearTimeout(this.resizeTimeout);
-            this.resizeTimeout = setTimeout(function () {
-                // 重绘所有图表
-                if (window.radarChart) window.radarChart.resize();
-                if (window.pieChart) window.pieChart.resize();
-                if (window.lineChart) window.lineChart.resize();
-                if (window.histogramChart) window.histogramChart.resize();
-            }, 200);
-        });
-
-        // 处理链接自动跳转（改进小屏幕体验）
-        // 在小屏幕上点击有子菜单的父项，自动展开子菜单并选择第一项
-        const parentMenuItems = document.querySelectorAll('.sidebar-menu > li');
-        parentMenuItems.forEach(item => {
-            const hasSubmenu = item.querySelector('.submenu') !== null;
-            if (hasSubmenu) {
-                item.addEventListener('click', function (e) {
-                    if (window.innerWidth < 768 && e.target === this || e.target.tagName === 'I' || e.target.tagName === 'SPAN') {
-                        // 展开子菜单
-                        const submenu = this.querySelector('.submenu');
-                        submenu.style.display = 'block';
-                    }
-                });
+                if (backdrop) backdrop.classList.toggle('show');
             }
         });
     }
+
+    // 添加统一图表尺寸的函数
+    function uniformChartSizes() {
+        // 选择所有图表canvas元素
+        const canvases = document.querySelectorAll('.chart-container canvas');
+
+        // 设置统一高度和宽度
+        canvases.forEach(canvas => {
+            canvas.setAttribute('style', 'height: 300px !important; width: 100% !important; display: block !important;');
+        });
+
+        // 重绘所有图表
+        if (window.radarChart) window.radarChart.resize();
+        if (window.pieChart) window.pieChart.resize();
+        if (window.lineChart) window.lineChart.resize();
+        if (window.histogramChart) window.histogramChart.resize();
+    }
+
+    // 窗口大小改变时重绘图表
+    window.addEventListener('resize', function () {
+        if (this.resizeTimeout) clearTimeout(this.resizeTimeout);
+        this.resizeTimeout = setTimeout(function () {
+            uniformChartSizes();
+        }, 200);
+    });
 }
 
 // 统一图表尺寸的函数

@@ -10,7 +10,9 @@
 }
 
 .sidebar {
-    height: 100vh;
+    /* height最小是100vh,若大于100vh，则变为100% */
+    min-height: 100vh;
+    height: 100%;
     background-color: #343a40;
     color: white;
     padding: 0;

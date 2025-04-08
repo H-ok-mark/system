@@ -20,31 +20,31 @@ body {
 
 /* 重要：主内容区样式调整 */
 .main-content {
-    margin-left: 250px;
-    /* 匹配侧边栏宽度 */
     padding: 20px;
     transition: all 0.3s;
     box-sizing: border-box;
     position: relative;
     min-height: 100vh;
+    width: 100%;
+    /* 移除固定的margin-left */
 }
 
-/* 响应式布局调整 */
+/* 响应式布局调整 - 移除固定margin */
 @media (min-width: 1200px) {
     .main-content {
-        margin-left: 250px;
+        /* 不需要固定margin-left */
     }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
     .main-content {
-        margin-left: 220px;
+        /* 不需要固定margin-left */
     }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
     .main-content {
-        margin-left: 200px;
+        /* 不需要固定margin-left */
     }
 }
 
@@ -60,9 +60,9 @@ body {
     }
 }
 
-/* 侧边栏折叠时的主内容区 */
+/* 侧边栏折叠时的主内容区不需要margin调整 */
 .sidebar-collapsed+.main-content {
-    margin-left: 60px;
+    /* 移除margin-left设置 */
 }
 
 /* 响应式布局调整 - 修改这部分 */
@@ -205,6 +205,7 @@ body {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+    margin-top: 20px;
     overflow-x: hidden;
 }
 
@@ -275,6 +276,6 @@ body {
     display: block !important;
 }
 
-/* ==================== */
-/* 图表样式统一 - 结束 */
-/* ==================== */
+.page-container {
+    margin-top: 20px;
+}
