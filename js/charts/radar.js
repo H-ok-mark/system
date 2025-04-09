@@ -51,6 +51,18 @@ function createRadarChart(studentId) {
                         suggestedMin: 0,
                         suggestedMax: 5
                     }
+                },
+                plugins: {
+                    legend: {
+                        display: false // 禁用图例显示
+                    },
+                    title: {
+                        display: true,
+                        text: '综合素质评价信息 - 暂无数据',
+                        font: {
+                            size: 16
+                        }
+                    }
                 }
             }
         });
@@ -110,6 +122,18 @@ function createRadarChart(studentId) {
                     suggestedMin: 0,
                     suggestedMax: 5
                 }
+            },
+            plugins: {
+                legend: {
+                    display: false // 禁用图例显示
+                },
+                title: {
+                    display: true,
+                    text: '综合素质评价信息',
+                    font: {
+                        size: 16
+                    }
+                }
             }
         }
     });
@@ -168,6 +192,18 @@ function createClassRadarChart(className) {
                         suggestedMin: 0,
                         suggestedMax: 5
                     }
+                },
+                plugins: {
+                    legend: {
+                        display: false // 禁用图例显示
+                    },
+                    title: {
+                        display: true,
+                        text: `${className} - 班级素质评价 - 暂无学生`,
+                        font: {
+                            size: 16
+                        }
+                    }
                 }
             }
         });
@@ -224,6 +260,18 @@ function createClassRadarChart(className) {
                         },
                         suggestedMin: 0,
                         suggestedMax: 5
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false // 禁用图例显示
+                    },
+                    title: {
+                        display: true,
+                        text: `${className} - 班级素质评价 - 暂无成绩数据`,
+                        font: {
+                            size: 16
+                        }
                     }
                 }
             }
@@ -288,6 +336,18 @@ function createClassRadarChart(className) {
                     },
                     suggestedMin: 0,
                     suggestedMax: 5
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false // 禁用图例显示
+                },
+                title: {
+                    display: true,
+                    text: `${className} - 班级素质评价`,
+                    font: {
+                        size: 16
+                    }
                 }
             }
         }

@@ -111,7 +111,41 @@ function initGradeEntry() {
             qualityWorkflow: parseInt(document.getElementById('quality-workflow').value),
             qualityTeamwork: parseInt(document.getElementById('quality-teamwork').value),
             qualitySelfLearning: parseInt(document.getElementById('quality-self-learning').value),
-            qualityEthics: parseInt(document.getElementById('quality-ethics').value)
+            qualityEthics: parseInt(document.getElementById('quality-ethics').value),
+
+            // 项目成绩
+            projects: {
+                project1: {
+                    teacher: parseFloat(document.getElementById('project1-teacher').value) || 0,
+                    enterprise: parseFloat(document.getElementById('project1-enterprise').value) || 0,
+                    group: parseFloat(document.getElementById('project1-group').value) || 0
+                },
+                project2: {
+                    teacher: parseFloat(document.getElementById('project2-teacher').value) || 0,
+                    enterprise: parseFloat(document.getElementById('project2-enterprise').value) || 0,
+                    group: parseFloat(document.getElementById('project2-group').value) || 0
+                },
+                project3: {
+                    teacher: parseFloat(document.getElementById('project3-teacher').value) || 0,
+                    enterprise: parseFloat(document.getElementById('project3-enterprise').value) || 0,
+                    group: parseFloat(document.getElementById('project3-group').value) || 0
+                },
+                project4: {
+                    teacher: parseFloat(document.getElementById('project4-teacher').value) || 0,
+                    enterprise: parseFloat(document.getElementById('project4-enterprise').value) || 0,
+                    group: parseFloat(document.getElementById('project4-group').value) || 0
+                },
+                project5: {
+                    teacher: parseFloat(document.getElementById('project5-teacher').value) || 0,
+                    enterprise: parseFloat(document.getElementById('project5-enterprise').value) || 0,
+                    group: parseFloat(document.getElementById('project5-group').value) || 0
+                },
+                project6: {
+                    teacher: parseFloat(document.getElementById('project6-teacher').value) || 0,
+                    enterprise: parseFloat(document.getElementById('project6-enterprise').value) || 0,
+                    group: parseFloat(document.getElementById('project6-group').value) || 0
+                }
+            }
         };
 
         // 保存成绩
@@ -154,6 +188,51 @@ function fillGradeForm(grade) {
     document.getElementById('quality-teamwork').value = grade.qualityTeamwork || '';
     document.getElementById('quality-self-learning').value = grade.qualitySelfLearning || '';
     document.getElementById('quality-ethics').value = grade.qualityEthics || '';
+
+    // 填充项目成绩
+    if (grade.projects) {
+        // 项目一
+        if (grade.projects.project1) {
+            document.getElementById('project1-teacher').value = grade.projects.project1.teacher || '';
+            document.getElementById('project1-enterprise').value = grade.projects.project1.enterprise || '';
+            document.getElementById('project1-group').value = grade.projects.project1.group || '';
+        }
+
+        // 项目二
+        if (grade.projects.project2) {
+            document.getElementById('project2-teacher').value = grade.projects.project2.teacher || '';
+            document.getElementById('project2-enterprise').value = grade.projects.project2.enterprise || '';
+            document.getElementById('project2-group').value = grade.projects.project2.group || '';
+        }
+
+        // 项目三
+        if (grade.projects.project3) {
+            document.getElementById('project3-teacher').value = grade.projects.project3.teacher || '';
+            document.getElementById('project3-enterprise').value = grade.projects.project3.enterprise || '';
+            document.getElementById('project3-group').value = grade.projects.project3.group || '';
+        }
+
+        // 项目四
+        if (grade.projects.project4) {
+            document.getElementById('project4-teacher').value = grade.projects.project4.teacher || '';
+            document.getElementById('project4-enterprise').value = grade.projects.project4.enterprise || '';
+            document.getElementById('project4-group').value = grade.projects.project4.group || '';
+        }
+
+        // 项目五
+        if (grade.projects.project5) {
+            document.getElementById('project5-teacher').value = grade.projects.project5.teacher || '';
+            document.getElementById('project5-enterprise').value = grade.projects.project5.enterprise || '';
+            document.getElementById('project5-group').value = grade.projects.project5.group || '';
+        }
+
+        // 项目六
+        if (grade.projects.project6) {
+            document.getElementById('project6-teacher').value = grade.projects.project6.teacher || '';
+            document.getElementById('project6-enterprise').value = grade.projects.project6.enterprise || '';
+            document.getElementById('project6-group').value = grade.projects.project6.group || '';
+        }
+    }
 }
 
 // 重置成绩表单
@@ -272,7 +351,70 @@ function showGradeDetail(studentId) {
 
     const totalScore = calculateTotalScore(grade);
 
-    // 构建成绩详情HTML
+    // 计算各项目的总分
+    const projectScores = [];
+    if (grade.projects) {
+        for (let i = 1; i <= 6; i++) {
+            const projectKey = `project${i}`;
+            if (grade.projects[projectKey]) {
+                const project = grade.projects[projectKey];
+                const total = calculateProjectScore(project);
+                projectScores.push({
+                    name: `项目${i}`,
+                    teacher: project.teacher || 0,
+                    enterprise: project.enterprise || 0,
+                    group: project.group || 0,
+                    total: total
+                });
+            } else {
+                projectScores.push({
+                    name: `项目${i}`,
+                    teacher: 0,
+                    enterprise: 0,
+                    group: 0,
+                    total: 0
+                });
+            }
+        }
+    }
+
+    // 构建项目成绩HTML
+    let projectsHtml = '';
+    if (projectScores.length > 0) {
+        projectsHtml = `
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <h5>项目成绩</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>项目</th>
+                                    <th>教师评分</th>
+                                    <th>企业评分</th>
+                                    <th>小组评分</th>
+                                    <th>总评</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${projectScores.map(project => `
+                                    <tr>
+                                        <td>${project.name}</td>
+                                        <td>${project.teacher}</td>
+                                        <td>${project.enterprise}</td>
+                                        <td>${project.group}</td>
+                                        <td>${project.total.toFixed(1)}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // 构建成绩详情HTML（添加项目成绩部分）
     const detailHTML = `
         <div class="row">
             <div class="col-md-6">
@@ -289,6 +431,8 @@ function showGradeDetail(studentId) {
                 <p><strong>期末成绩(30%)：</strong>${grade.final}分</p>
             </div>
         </div>
+        
+        ${projectsHtml}
         
         <div class="row mt-3">
             <div class="col-md-12">
@@ -374,7 +518,7 @@ function showGradeDetail(studentId) {
     modal.show();
 }
 
-// 初始化成绩分析页面
+// 修改initGradeAnalysis函数
 function initGradeAnalysis() {
     const classSelector = document.getElementById('analysis-class');
     const studentSelector = document.getElementById('analysis-student');
@@ -438,6 +582,10 @@ function initGradeAnalysis() {
                 createLineChart(selectedStudent);
                 // 创建个人直方图
                 createHistogram(selectedStudent);
+                // 创建项目直方图
+                createProjectHistogram(selectedStudent);
+                // 创建项目气泡图
+                createProjectBubble(selectedStudent);
             } else {
                 // 清空图表
                 clearCharts();
@@ -453,6 +601,10 @@ function initGradeAnalysis() {
                 createClassLineChart(selectedClass);
                 // 创建班级直方图
                 createClassHistogram(selectedClass);
+                // 创建班级项目直方图
+                createClassProjectHistogram(selectedClass);
+                // 创建班级项目气泡图
+                createClassProjectBubble(selectedClass);
             } else {
                 // 清空图表
                 clearCharts();
@@ -485,6 +637,10 @@ function initGradeAnalysis() {
             window.histogramChart.destroy();
             window.histogramChart = null;
         }
+
+        // 清除项目图表
+        clearProjectHistogram();
+        clearProjectBubble();
     }
 }
 
@@ -513,4 +669,14 @@ function calculateTotalScore(grade) {
     const final = grade.final * 0.3;
 
     return usual + theory + practical + final;
+}
+
+// 添加计算项目成绩的函数
+function calculateProjectScore(project) {
+    // 默认计算方式：教师评分40%，企业评分30%，小组评分30%
+    const teacherScore = (project.teacher || 0) * 0.4;
+    const enterpriseScore = (project.enterprise || 0) * 0.3;
+    const groupScore = (project.group || 0) * 0.3;
+
+    return teacherScore + enterpriseScore + groupScore;
 }

@@ -149,6 +149,12 @@ function loadPage(page) {
             break;
         case 'grade-analysis':
             initGradeAnalysis();
+            // 确保正确初始化图表查看功能
+            setTimeout(() => {
+                if (typeof reinitChartViewer === 'function') {
+                    reinitChartViewer();
+                }
+            }, 500);
             break;
         case 'personal-info':
             initPersonalInfo();
@@ -577,6 +583,207 @@ function generateGradeEntryContent() {
                             </div>
                         </div>
                         
+                        <h5 class="mt-4 mb-3">项目成绩</h5>
+                        <div class="accordion" id="projectGradesAccordion">
+                            <!-- 项目一 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingProject1">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProject1" aria-expanded="false" aria-controls="collapseProject1">
+                                        项目一成绩
+                                    </button>
+                                </h2>
+                                <div id="collapseProject1" class="accordion-collapse collapse" aria-labelledby="headingProject1" data-bs-parent="#projectGradesAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project1-teacher" class="form-label">教师评分</label>
+                                                    <input type="number" class="form-control" id="project1-teacher" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project1-enterprise" class="form-label">企业评分</label>
+                                                    <input type="number" class="form-control" id="project1-enterprise" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project1-group" class="form-label">小组评分</label>
+                                                    <input type="number" class="form-control" id="project1-group" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 项目二 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingProject2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProject2" aria-expanded="false" aria-controls="collapseProject2">
+                                        项目二成绩
+                                    </button>
+                                </h2>
+                                <div id="collapseProject2" class="accordion-collapse collapse" aria-labelledby="headingProject2" data-bs-parent="#projectGradesAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project2-teacher" class="form-label">教师评分</label>
+                                                    <input type="number" class="form-control" id="project2-teacher" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project2-enterprise" class="form-label">企业评分</label>
+                                                    <input type="number" class="form-control" id="project2-enterprise" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project2-group" class="form-label">小组评分</label>
+                                                    <input type="number" class="form-control" id="project2-group" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 项目三 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingProject3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProject3" aria-expanded="false" aria-controls="collapseProject3">
+                                        项目三成绩
+                                    </button>
+                                </h2>
+                                <div id="collapseProject3" class="accordion-collapse collapse" aria-labelledby="headingProject3" data-bs-parent="#projectGradesAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project3-teacher" class="form-label">教师评分</label>
+                                                    <input type="number" class="form-control" id="project3-teacher" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project3-enterprise" class="form-label">企业评分</label>
+                                                    <input type="number" class="form-control" id="project3-enterprise" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project3-group" class="form-label">小组评分</label>
+                                                    <input type="number" class="form-control" id="project3-group" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 项目四 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingProject4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProject4" aria-expanded="false" aria-controls="collapseProject4">
+                                        项目四成绩
+                                    </button>
+                                </h2>
+                                <div id="collapseProject4" class="accordion-collapse collapse" aria-labelledby="headingProject4" data-bs-parent="#projectGradesAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project4-teacher" class="form-label">教师评分</label>
+                                                    <input type="number" class="form-control" id="project4-teacher" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project4-enterprise" class="form-label">企业评分</label>
+                                                    <input type="number" class="form-control" id="project4-enterprise" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project4-group" class="form-label">小组评分</label>
+                                                    <input type="number" class="form-control" id="project4-group" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 项目五 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingProject5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProject5" aria-expanded="false" aria-controls="collapseProject5">
+                                        项目五成绩
+                                    </button>
+                                </h2>
+                                <div id="collapseProject5" class="accordion-collapse collapse" aria-labelledby="headingProject5" data-bs-parent="#projectGradesAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project5-teacher" class="form-label">教师评分</label>
+                                                    <input type="number" class="form-control" id="project5-teacher" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project5-enterprise" class="form-label">企业评分</label>
+                                                    <input type="number" class="form-control" id="project5-enterprise" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project5-group" class="form-label">小组评分</label>
+                                                    <input type="number" class="form-control" id="project5-group" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 项目六 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingProject6">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProject6" aria-expanded="false" aria-controls="collapseProject6">
+                                        项目六成绩
+                                    </button>
+                                </h2>
+                                <div id="collapseProject6" class="accordion-collapse collapse" aria-labelledby="headingProject6" data-bs-parent="#projectGradesAccordion">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project6-teacher" class="form-label">教师评分</label>
+                                                    <input type="number" class="form-control" id="project6-teacher" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project6-enterprise" class="form-label">企业评分</label>
+                                                    <input type="number" class="form-control" id="project6-enterprise" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="project6-group" class="form-label">小组评分</label>
+                                                    <input type="number" class="form-control" id="project6-group" min="0" max="100" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <h5 class="mt-4 mb-3">单元成绩</h5>
                         <div class="row">
                             <div class="col-md-4">
@@ -840,6 +1047,7 @@ function generateGradeAnalysisContent() {
                 </div>
             </div>
             
+            <!-- 原有的图表 -->
             <div class="row charts-row">
                 <div class="col-lg-6">
                     <div class="card mb-4 h-100">
@@ -888,6 +1096,34 @@ function generateGradeAnalysisContent() {
                         <div class="card-body d-flex align-items-center justify-content-center">
                             <div class="chart-container">
                                 <canvas id="histogram-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 新增项目成绩分析图表 -->
+            <div class="row charts-row">
+                <div class="col-lg-6">
+                    <div class="card mb-4 h-100">
+                        <div class="card-header">
+                            项目成绩组成 (堆叠柱状图)
+                        </div>
+                        <div class="card-body d-flex align-items-center justify-content-center">
+                            <div class="chart-container">
+                                <canvas id="project-histogram-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card mb-4 h-100">
+                        <div class="card-header">
+                            项目成绩 (气泡图)
+                        </div>
+                        <div class="card-body d-flex align-items-center justify-content-center">
+                            <div class="chart-container">
+                                <canvas id="project-bubble-chart"></canvas>
                             </div>
                         </div>
                     </div>
