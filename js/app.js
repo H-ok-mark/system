@@ -286,7 +286,8 @@ window.addEventListener('resize', function () {
 function generateDashboardContent() {
     return `
         <div class="container">
-            <h2 class="mb-4">系统概览</h2>
+            <h2 class="mb-4">遥感原理与应用考核评价系统
+</h2>
             <div class="row">
                 <div class="col-md-3">
                     <div class="dashboard-card">
@@ -1228,7 +1229,7 @@ function generateGradeAnalysisContent() {
 function generatePersonalInfoContent() {
     return `
         <div class="container">
-            <h2 class="mb-4">个人信息</h2>
+            <h2 class="mb-4">教师信息</h2>
             
             <div class="card">
                 <div class="card-body">
