@@ -58,7 +58,7 @@ function createRadarChart(studentId) {
                     },
                     title: {
                         display: true,
-                        text: '综合素质评价信息 - 暂无数据',
+                        text: '综合素质评价 - 暂无数据',
                         font: {
                             size: 16
                         }
@@ -129,7 +129,7 @@ function createRadarChart(studentId) {
                 },
                 title: {
                     display: true,
-                    text: '综合素质评价信息',
+                    text: '综合素质评价',
                     font: {
                         size: 16
                     }
@@ -199,7 +199,7 @@ function createClassRadarChart(className) {
                     },
                     title: {
                         display: true,
-                        text: `${className} - 班级素质评价 - 暂无学生`,
+                        text: `${className} - 班级综合素质评价 - 暂无学生`,
                         font: {
                             size: 16
                         }
@@ -268,7 +268,7 @@ function createClassRadarChart(className) {
                     },
                     title: {
                         display: true,
-                        text: `${className} - 班级素质评价 - 暂无成绩数据`,
+                        text: `${className} - 班级综合素质评价 - 暂无数据`,
                         font: {
                             size: 16
                         }
@@ -344,7 +344,7 @@ function createClassRadarChart(className) {
                 },
                 title: {
                     display: true,
-                    text: `${className} - 班级素质评价`,
+                    text: `${className} - 班级综合素质评价`,
                     font: {
                         size: 16
                     }

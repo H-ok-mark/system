@@ -65,7 +65,13 @@ function createProjectHistogram(studentId) {
             ]
         },
         options: {
+            ...chartBaseOptions, // 继承全局配置
             responsive: true,
+            layout: {
+                // padding: {
+                //     top: 10 // 消除顶部padding
+                // }
+            },
             scales: {
                 x: {
                     stacked: true
@@ -82,7 +88,11 @@ function createProjectHistogram(studentId) {
                     text: '项目成绩组成',
                     font: {
                         size: 16
-                    }
+                    },
+                    // padding: {
+                    //     top: 10, // 减少标题顶部padding
+                    //     bottom: 10
+                    // }
                 },
                 tooltip: {
                     callbacks: {
@@ -187,7 +197,13 @@ function createClassProjectHistogram(className) {
             ]
         },
         options: {
+            ...chartBaseOptions, // 继承全局配置
             responsive: true,
+            layout: {
+                // padding: {
+                //     top: 10 // 消除顶部padding
+                // }
+            },
             scales: {
                 x: {
                     stacked: true
@@ -201,10 +217,14 @@ function createClassProjectHistogram(className) {
             plugins: {
                 title: {
                     display: true,
-                    text: `${className} - 班级项目成绩平均组成`,
+                    text: `${className} - 班级项目成绩组成`,
                     font: {
                         size: 16
-                    }
+                    },
+                    // padding: {
+                    //     top: 10, // 减少标题顶部padding
+                    //     bottom: 10
+                    // }
                 },
                 tooltip: {
                     callbacks: {

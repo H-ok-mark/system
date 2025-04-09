@@ -86,40 +86,23 @@ function showChartInModal(canvas) {
         options: originalChart.config.options
     }));
 
+
     // 特殊处理项目气泡图的颜色
-    if (canvas.id === 'project-bubble-chart' && originalChart.bgColorMap && originalChart.borderColorMap) {
-        const bgColorMap = originalChart.bgColorMap;
-        const borderColorMap = originalChart.borderColorMap;
+    if (canvas.id === 'project-bubble-chart' && originalChart.chartColors && originalChart.chartBorderColors) {
+        const colors = originalChart.chartColors;
+        const borderColors = originalChart.chartBorderColors;
 
-        // 重新添加颜色函数
+        // 新的多数据集气泡图
         if (modalConfig.data.datasets && modalConfig.data.datasets.length > 0) {
-            modalConfig.data.datasets[0].backgroundColor = function (context) {
-                const gradeLevel = context.raw.gradeLevel;
-                return bgColorMap[gradeLevel];
-            };
-
-            modalConfig.data.datasets[0].borderColor = function (context) {
-                const gradeLevel = context.raw.gradeLevel;
-                return borderColorMap[gradeLevel];
-            };
-
-            // 重新设置图例生成函数
-            if (modalConfig.options && modalConfig.options.plugins && modalConfig.options.plugins.legend) {
-                modalConfig.options.plugins.legend.labels = {
-                    generateLabels: function () {
-                        return [
-                            { text: '优秀 (90-100分)', fillStyle: bgColorMap['优秀'], strokeStyle: borderColorMap['优秀'] },
-                            { text: '良好 (80-89分)', fillStyle: bgColorMap['良好'], strokeStyle: borderColorMap['良好'] },
-                            { text: '中等 (70-79分)', fillStyle: bgColorMap['中等'], strokeStyle: borderColorMap['中等'] },
-                            { text: '及格 (60-69分)', fillStyle: bgColorMap['及格'], strokeStyle: borderColorMap['及格'] },
-                            { text: '不及格 (<60分)', fillStyle: bgColorMap['不及格'], strokeStyle: borderColorMap['不及格'] }
-                        ];
-                    }
-                };
-            }
+            // 为每个数据集应用对应颜色
+            modalConfig.data.datasets.forEach((dataset, i) => {
+                if (i < colors.length) {
+                    dataset.backgroundColor = colors[i];
+                    dataset.borderColor = borderColors[i];
+                }
+            });
         }
     }
-
     // 调整模态框图表的选项配置
     if (modalConfig.options) {
         // 确保响应式

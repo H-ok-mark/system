@@ -22,7 +22,7 @@ function initializeStorage() {
         addClass({
             id: 'c001',
             name: '摄影测量2111',
-            createTime: '2021-09-01'
+            createTime: '2022-09-01'
         });
     }
 

@@ -227,6 +227,12 @@ body {
     display: flex;
 }
 
+/* 调整图表布局 */
+.charts-row .col-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+}
+
 .charts-row .card {
     width: 100%;
     min-height: 450px;

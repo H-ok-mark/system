@@ -68,13 +68,13 @@ function createHistogram(studentId) {
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: '数值'
+                    // text: '数值'
                 }
             },
             x: {
                 title: {
                     display: true,
-                    text: '指标'
+                    // text: '指标'
                 }
             }
         },
@@ -228,13 +228,13 @@ function createClassHistogram(className) {
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: '数值'
+                    // text: '数值'
                 }
             },
             x: {
                 title: {
                     display: true,
-                    text: '学生'
+                    // text: '学生'
                 }
             }
         },

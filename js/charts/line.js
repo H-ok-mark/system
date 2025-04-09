@@ -92,13 +92,13 @@ function createLineChart(studentId) {
                 max: 100,
                 title: {
                     display: true,
-                    text: '分数'
+                    // text: '分数'
                 }
             },
             x: {
                 title: {
                     display: true,
-                    text: '课程单元'
+                    // text: '课程单元'
                 }
             }
         },
@@ -261,13 +261,13 @@ function createClassLineChart(className) {
                 max: 100,
                 title: {
                     display: true,
-                    text: '分数'
+                    // text: '分数'
                 }
             },
             x: {
                 title: {
                     display: true,
-                    text: '课程单元'
+                    // text: '课程单元'
                 }
             }
         },

@@ -1,9 +1,24 @@
 // 全局共享的图表配置选项
 const chartBaseOptions = {
     responsive: true,
-    maintainAspectRatio: false,  // 关键设置：不维持纵横比
-    devicePixelRatio: 2, // 提高渲染质量
+    maintainAspectRatio: false,
+    devicePixelRatio: 2,
     animation: {
         duration: 500
+    },
+    layout: {
+        padding: 0
+    },
+    plugins: {
+        title: {
+            display: true,
+            font: {
+                size: 16
+            },
+            padding: {
+                top: 10,
+                bottom: 10
+            }
+        }
     }
 };

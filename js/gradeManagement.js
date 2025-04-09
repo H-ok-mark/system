@@ -100,9 +100,10 @@ function initGradeEntry() {
             unitClassification: parseFloat(document.getElementById('unit-classification').value),
             unitAccuracy: parseFloat(document.getElementById('unit-accuracy').value),
             unitMapping: parseFloat(document.getElementById('unit-mapping').value),
-            // 学习资源使用情况
-            resourceUsage: parseInt(document.getElementById('resource-usage').value),
-            experimentTime: parseInt(document.getElementById('experiment-time').value),
+            // // 学习资源使用情况
+            // resourceUsage: parseInt(document.getElementById('resource-usage').value),
+            // experimentTime: parseInt(document.getElementById('experiment-time').value),
+
             // 综合素质评价
             qualityTheory: parseInt(document.getElementById('quality-theory').value),
             qualityDrone: parseInt(document.getElementById('quality-drone').value),
@@ -118,32 +119,44 @@ function initGradeEntry() {
                 project1: {
                     teacher: parseFloat(document.getElementById('project1-teacher').value) || 0,
                     enterprise: parseFloat(document.getElementById('project1-enterprise').value) || 0,
-                    group: parseFloat(document.getElementById('project1-group').value) || 0
+                    group: parseFloat(document.getElementById('project1-group').value) || 0,
+                    experimentCount: parseInt(document.getElementById('project1-count').value) || 0,
+                    experimentTime: parseInt(document.getElementById('project1-time').value) || 0
                 },
                 project2: {
                     teacher: parseFloat(document.getElementById('project2-teacher').value) || 0,
                     enterprise: parseFloat(document.getElementById('project2-enterprise').value) || 0,
-                    group: parseFloat(document.getElementById('project2-group').value) || 0
+                    group: parseFloat(document.getElementById('project2-group').value) || 0,
+                    experimentCount: parseInt(document.getElementById('project2-count').value) || 0,
+                    experimentTime: parseInt(document.getElementById('project2-time').value) || 0
                 },
                 project3: {
                     teacher: parseFloat(document.getElementById('project3-teacher').value) || 0,
                     enterprise: parseFloat(document.getElementById('project3-enterprise').value) || 0,
-                    group: parseFloat(document.getElementById('project3-group').value) || 0
+                    group: parseFloat(document.getElementById('project3-group').value) || 0,
+                    experimentCount: parseInt(document.getElementById('project3-count').value) || 0,
+                    experimentTime: parseInt(document.getElementById('project3-time').value) || 0
                 },
                 project4: {
                     teacher: parseFloat(document.getElementById('project4-teacher').value) || 0,
                     enterprise: parseFloat(document.getElementById('project4-enterprise').value) || 0,
-                    group: parseFloat(document.getElementById('project4-group').value) || 0
+                    group: parseFloat(document.getElementById('project4-group').value) || 0,
+                    experimentCount: parseInt(document.getElementById('project4-count').value) || 0,
+                    experimentTime: parseInt(document.getElementById('project4-time').value) || 0
                 },
                 project5: {
                     teacher: parseFloat(document.getElementById('project5-teacher').value) || 0,
                     enterprise: parseFloat(document.getElementById('project5-enterprise').value) || 0,
-                    group: parseFloat(document.getElementById('project5-group').value) || 0
+                    group: parseFloat(document.getElementById('project5-group').value) || 0,
+                    experimentCount: parseInt(document.getElementById('project5-count').value) || 0,
+                    experimentTime: parseInt(document.getElementById('project5-time').value) || 0
                 },
                 project6: {
                     teacher: parseFloat(document.getElementById('project6-teacher').value) || 0,
                     enterprise: parseFloat(document.getElementById('project6-enterprise').value) || 0,
-                    group: parseFloat(document.getElementById('project6-group').value) || 0
+                    group: parseFloat(document.getElementById('project6-group').value) || 0,
+                    experimentCount: parseInt(document.getElementById('project6-count').value) || 0,
+                    experimentTime: parseInt(document.getElementById('project6-time').value) || 0
                 }
             }
         };
@@ -175,10 +188,6 @@ function fillGradeForm(grade) {
     document.getElementById('unit-accuracy').value = grade.unitAccuracy || '';
     document.getElementById('unit-mapping').value = grade.unitMapping || '';
 
-    // 学习资源使用情况
-    document.getElementById('resource-usage').value = grade.resourceUsage || '';
-    document.getElementById('experiment-time').value = grade.experimentTime || '';
-
     // 综合素质评价
     document.getElementById('quality-theory').value = grade.qualityTheory || '';
     document.getElementById('quality-drone').value = grade.qualityDrone || '';
@@ -196,6 +205,8 @@ function fillGradeForm(grade) {
             document.getElementById('project1-teacher').value = grade.projects.project1.teacher || '';
             document.getElementById('project1-enterprise').value = grade.projects.project1.enterprise || '';
             document.getElementById('project1-group').value = grade.projects.project1.group || '';
+            document.getElementById('project1-count').value = grade.projects.project1.experimentCount || '';
+            document.getElementById('project1-time').value = grade.projects.project1.experimentTime || '';
         }
 
         // 项目二
@@ -203,6 +214,8 @@ function fillGradeForm(grade) {
             document.getElementById('project2-teacher').value = grade.projects.project2.teacher || '';
             document.getElementById('project2-enterprise').value = grade.projects.project2.enterprise || '';
             document.getElementById('project2-group').value = grade.projects.project2.group || '';
+            document.getElementById('project2-count').value = grade.projects.project2.experimentCount || '';
+            document.getElementById('project2-time').value = grade.projects.project2.experimentTime || '';
         }
 
         // 项目三
@@ -210,6 +223,8 @@ function fillGradeForm(grade) {
             document.getElementById('project3-teacher').value = grade.projects.project3.teacher || '';
             document.getElementById('project3-enterprise').value = grade.projects.project3.enterprise || '';
             document.getElementById('project3-group').value = grade.projects.project3.group || '';
+            document.getElementById('project3-count').value = grade.projects.project3.experimentCount || '';
+            document.getElementById('project3-time').value = grade.projects.project3.experimentTime || '';
         }
 
         // 项目四
@@ -217,6 +232,8 @@ function fillGradeForm(grade) {
             document.getElementById('project4-teacher').value = grade.projects.project4.teacher || '';
             document.getElementById('project4-enterprise').value = grade.projects.project4.enterprise || '';
             document.getElementById('project4-group').value = grade.projects.project4.group || '';
+            document.getElementById('project4-count').value = grade.projects.project4.experimentCount || '';
+            document.getElementById('project4-time').value = grade.projects.project4.experimentTime || '';
         }
 
         // 项目五
@@ -224,6 +241,8 @@ function fillGradeForm(grade) {
             document.getElementById('project5-teacher').value = grade.projects.project5.teacher || '';
             document.getElementById('project5-enterprise').value = grade.projects.project5.enterprise || '';
             document.getElementById('project5-group').value = grade.projects.project5.group || '';
+            document.getElementById('project5-count').value = grade.projects.project5.experimentCount || '';
+            document.getElementById('project5-time').value = grade.projects.project5.experimentTime || '';
         }
 
         // 项目六
@@ -231,6 +250,8 @@ function fillGradeForm(grade) {
             document.getElementById('project6-teacher').value = grade.projects.project6.teacher || '';
             document.getElementById('project6-enterprise').value = grade.projects.project6.enterprise || '';
             document.getElementById('project6-group').value = grade.projects.project6.group || '';
+            document.getElementById('project6-count').value = grade.projects.project6.experimentCount || '';
+            document.getElementById('project6-time').value = grade.projects.project6.experimentTime || '';
         }
     }
 }
@@ -339,7 +360,6 @@ function initGradeQuery() {
         });
     }
 }
-
 // 显示成绩详情
 function showGradeDetail(studentId) {
     const student = getStudentById(studentId);
@@ -364,7 +384,9 @@ function showGradeDetail(studentId) {
                     teacher: project.teacher || 0,
                     enterprise: project.enterprise || 0,
                     group: project.group || 0,
-                    total: total
+                    total: total,
+                    experimentCount: project.experimentCount || 0,
+                    experimentTime: project.experimentTime || 0
                 });
             } else {
                 projectScores.push({
@@ -372,7 +394,9 @@ function showGradeDetail(studentId) {
                     teacher: 0,
                     enterprise: 0,
                     group: 0,
-                    total: 0
+                    total: 0,
+                    experimentCount: 0,
+                    experimentTime: 0
                 });
             }
         }
@@ -382,17 +406,19 @@ function showGradeDetail(studentId) {
     let projectsHtml = '';
     if (projectScores.length > 0) {
         projectsHtml = `
-            <div class="row mt-3">
+            <div class="row mt-4">
                 <div class="col-md-12">
-                    <h5>项目成绩</h5>
+                    <h5 class="border-bottom pb-2 mb-3">项目成绩</h5>
                     <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-light">
                                 <tr>
                                     <th>项目</th>
                                     <th>教师评分</th>
                                     <th>企业评分</th>
                                     <th>小组评分</th>
+                                    <th>实验次数</th>
+                                    <th>实验时间(分钟)</th>
                                     <th>总评</th>
                                 </tr>
                             </thead>
@@ -403,7 +429,11 @@ function showGradeDetail(studentId) {
                                         <td>${project.teacher}</td>
                                         <td>${project.enterprise}</td>
                                         <td>${project.group}</td>
-                                        <td>${project.total.toFixed(1)}</td>
+                                        <td>${project.experimentCount}</td>
+                                        <td>${project.experimentTime}</td>
+                                        <td>
+                                            <span class="badge rounded-pill bg-${getScoreBadgeColor(project.total)}">${project.total.toFixed(1)}</span>
+                                        </td>
                                     </tr>
                                 `).join('')}
                             </tbody>
@@ -414,32 +444,14 @@ function showGradeDetail(studentId) {
         `;
     }
 
-    // 构建成绩详情HTML（添加项目成绩部分）
-    const detailHTML = `
-        <div class="row">
-            <div class="col-md-6">
-                <h5>学生信息</h5>
-                <p><strong>姓名：</strong>${student.name}</p>
-                <p><strong>学号：</strong>${student.id}</p>
-                <p><strong>班级：</strong>${student.class}</p>
-            </div>
-            <div class="col-md-6">
-                <h5>总成绩：${totalScore.toFixed(1)}分</h5>
-                <p><strong>平时成绩(20%)：</strong>${grade.usual}分</p>
-                <p><strong>理论成绩(30%)：</strong>${grade.theory}分</p>
-                <p><strong>实践成绩(20%)：</strong>${grade.practical}分</p>
-                <p><strong>期末成绩(30%)：</strong>${grade.final}分</p>
-            </div>
-        </div>
-        
-        ${projectsHtml}
-        
-        <div class="row mt-3">
+    // 构建单元成绩HTML
+    const unitHtml = `
+        <div class="row mt-4">
             <div class="col-md-12">
-                <h5>单元成绩</h5>
+                <h5 class="border-bottom pb-2 mb-3">单元成绩</h5>
                 <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-light">
                             <tr>
                                 <th>遥感基础知识</th>
                                 <th>无人机数据获取</th>
@@ -459,9 +471,9 @@ function showGradeDetail(studentId) {
                         </tbody>
                     </table>
                 </div>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
+                <div class="table-responsive mt-2">
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-light">
                             <tr>
                                 <th>目视解译</th>
                                 <th>变化监测</th>
@@ -483,30 +495,87 @@ function showGradeDetail(studentId) {
                 </div>
             </div>
         </div>
-        
-        <div class="row mt-3">
-            <div class="col-md-6">
-                <h5>学习资源使用情况</h5>
-                <p><strong>学习资源使用次数：</strong>${grade.resourceUsage || 0}次</p>
-                <p><strong>实验完成时间：</strong>${grade.experimentTime || 0}分钟</p>
-            </div>
-            <div class="col-md-6">
-                <h5>综合素质评价 (1-5分)</h5>
+    `;
+
+    // 构建综合素质评价HTML
+    const qualityHtml = `
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h5 class="border-bottom pb-2 mb-3">综合素质评价 (1-5分)</h5>
                 <div class="row">
                     <div class="col-md-6">
-                        <p><strong>卫星遥感基础理论：</strong>${grade.qualityTheory || 0}</p>
-                        <p><strong>无人机遥感知识：</strong>${grade.qualityDrone || 0}</p>
-                        <p><strong>软件操作技能：</strong>${grade.qualitySoftware || 0}</p>
-                        <p><strong>影像解译能力：</strong>${grade.qualityInterpretation || 0}</p>
+                        <div class="mb-2 d-flex justify-content-between">
+                            <span>卫星遥感基础理论：</span>
+                            <span class="fw-bold">${grade.qualityTheory || 0} 分</span>
+                        </div>
+                        <div class="mb-2 d-flex justify-content-between">
+                            <span>无人机遥感知识：</span>
+                            <span class="fw-bold">${grade.qualityDrone || 0} 分</span>
+                        </div>
+                        <div class="mb-2 d-flex justify-content-between">
+                            <span>软件操作技能：</span>
+                            <span class="fw-bold">${grade.qualitySoftware || 0} 分</span>
+                        </div>
+                        <div class="mb-2 d-flex justify-content-between">
+                            <span>影像解译能力：</span>
+                            <span class="fw-bold">${grade.qualityInterpretation || 0} 分</span>
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <p><strong>规范化技术流程：</strong>${grade.qualityWorkflow || 0}</p>
-                        <p><strong>团队协作：</strong>${grade.qualityTeamwork || 0}</p>
-                        <p><strong>自学能力：</strong>${grade.qualitySelfLearning || 0}</p>
-                        <p><strong>职业道德：</strong>${grade.qualityEthics || 0}</p>
+                        <div class="mb-2 d-flex justify-content-between">
+                            <span>规范化技术流程：</span>
+                            <span class="fw-bold">${grade.qualityWorkflow || 0} 分</span>
+                        </div>
+                        <div class="mb-2 d-flex justify-content-between">
+                            <span>团队协作：</span>
+                            <span class="fw-bold">${grade.qualityTeamwork || 0} 分</span>
+                        </div>
+                        <div class="mb-2 d-flex justify-content-between">
+                            <span>自学能力：</span>
+                            <span class="fw-bold">${grade.qualitySelfLearning || 0} 分</span>
+                        </div>
+                        <div class="mb-2 d-flex justify-content-between">
+                            <span>职业道德：</span>
+                            <span class="fw-bold">${grade.qualityEthics || 0} 分</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    `;
+
+    // 构建成绩详情HTML
+    const detailHTML = `
+        <div class="container-fluid p-0">
+            <div class="card mb-3">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">学生基本信息</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>姓名：</strong>${student.name}</p>
+                            <p><strong>学号：</strong>${student.id}</p>
+                            <p><strong>班级：</strong>${student.class}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>总成绩：
+                                <span class="badge rounded-pill bg-${getScoreBadgeColor(totalScore)}">
+                                    ${totalScore.toFixed(1)}分
+                                </span>
+                            </h5>
+                            <p><strong>平时成绩(20%)：</strong>${grade.usual || 0}分</p>
+                            <p><strong>理论成绩(30%)：</strong>${grade.theory || 0}分</p>
+                            <p><strong>实践成绩(20%)：</strong>${grade.practical || 0}分</p>
+                            <p><strong>期末成绩(30%)：</strong>${grade.final || 0}分</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            ${projectsHtml}
+            ${unitHtml}
+            ${qualityHtml}
         </div>
     `;
 
@@ -516,6 +585,15 @@ function showGradeDetail(studentId) {
     // 使用Bootstrap的Modal API显示模态框
     const modal = new bootstrap.Modal(document.getElementById('gradeDetailModal'));
     modal.show();
+}
+
+// 根据分数获取对应的徽章颜色
+function getScoreBadgeColor(score) {
+    if (score >= 90) return 'success';
+    else if (score >= 80) return 'primary';
+    else if (score >= 70) return 'info';
+    else if (score >= 60) return 'warning';
+    else return 'danger';
 }
 
 // 修改initGradeAnalysis函数
@@ -571,47 +649,34 @@ function initGradeAnalysis() {
         const selectedStudent = studentSelector.value;
         const analysisType = analysisTypeSelector.value;
 
-        if (analysisType === 'individual') {
-            // 个人分析
-            if (selectedStudent) {
-                // 创建个人雷达图
-                createRadarChart(selectedStudent);
-                // 创建个人饼图
-                createPieChart(selectedStudent);
-                // 创建个人折线图
-                createLineChart(selectedStudent);
-                // 创建个人直方图
-                createHistogram(selectedStudent);
-                // 创建项目直方图
-                createProjectHistogram(selectedStudent);
-                // 创建项目气泡图
-                createProjectBubble(selectedStudent);
-            } else {
-                // 清空图表
-                clearCharts();
-            }
-        } else {
-            // 班级分析
-            if (selectedClass) {
-                // 创建班级雷达图
-                createClassRadarChart(selectedClass);
-                // 创建班级饼图
-                createClassPieChart(selectedClass);
-                // 创建班级折线图
-                createClassLineChart(selectedClass);
-                // 创建班级直方图
-                createClassHistogram(selectedClass);
-                // 创建班级项目直方图
-                createClassProjectHistogram(selectedClass);
-                // 创建班级项目气泡图
-                createClassProjectBubble(selectedClass);
-            } else {
-                // 清空图表
-                clearCharts();
-            }
-        }
-        // 在初始化图表后统一尺寸
         setTimeout(function () {
+            if (analysisType === 'individual') {
+                // 个人分析
+                if (selectedStudent) {
+                    createRadarChart(selectedStudent);
+                    // 移除饼图: createPieChart(selectedStudent);
+                    createLineChart(selectedStudent);
+                    // 移除直方图: createHistogram(selectedStudent);
+                    createProjectHistogram(selectedStudent);
+                    createProjectBubble(selectedStudent);
+                } else {
+                    clearCharts();
+                }
+            } else {
+                // 班级分析
+                if (selectedClass) {
+                    createClassRadarChart(selectedClass);
+                    // 移除饼图: createClassPieChart(selectedClass);
+                    createClassLineChart(selectedClass);
+                    // 移除直方图: createClassHistogram(selectedClass);
+                    createClassProjectHistogram(selectedClass);
+                    createClassProjectBubble(selectedClass);
+                } else {
+                    clearCharts();
+                }
+            }
+
+            // 在所有图表创建完成后手动调整尺寸
             uniformChartSizes();
         }, 100);
     }

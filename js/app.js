@@ -232,8 +232,20 @@ function setupSidebarToggle() {
 
     // 窗口大小改变时重绘图表
     window.addEventListener('resize', function () {
-        if (this.resizeTimeout) clearTimeout(this.resizeTimeout);
+        // 延迟执行以避免频繁调用
+        if (this.resizeTimeout) {
+            clearTimeout(this.resizeTimeout);
+        }
         this.resizeTimeout = setTimeout(function () {
+            // 更新所有图表尺寸
+            if (window.radarChart) window.radarChart.resize();
+            if (window.pieChart) window.pieChart.resize();
+            if (window.lineChart) window.lineChart.resize();
+            if (window.histogramChart) window.histogramChart.resize();
+            if (window.projectHistogramChart) window.projectHistogramChart.resize();
+            if (window.projectBubbleChart) window.projectBubbleChart.resize();
+
+            // 统一所有图表大小
             uniformChartSizes();
         }, 200);
     });
@@ -317,7 +329,12 @@ function generateDashboardContent() {
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                
+            </div>
+        </div>
+    `;
+}
+{/* <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
                             成绩趋势分析
@@ -326,11 +343,7 @@ function generateDashboardContent() {
                             <canvas id="score-trend-chart"></canvas>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    `;
-}
+                </div> */}
 
 // 生成班级管理内容
 function generateClassManagementContent() {
@@ -533,7 +546,6 @@ function generateGradeEntryContent() {
                                 <label for="grade-entry-class" class="form-label">选择班级</label>
                                 <select class="form-select" id="grade-entry-class">
                                     <option value="">请选择班级</option>
-                                    <!-- 班级选项将在这里动态生成 -->
                                 </select>
                             </div>
                         </div>
@@ -542,7 +554,6 @@ function generateGradeEntryContent() {
                                 <label for="grade-entry-student" class="form-label">选择学生</label>
                                 <select class="form-select" id="grade-entry-student" disabled>
                                     <option value="">请先选择班级</option>
-                                    <!-- 学生选项将在这里动态生成 -->
                                 </select>
                             </div>
                         </div>
@@ -598,19 +609,33 @@ function generateGradeEntryContent() {
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project1-teacher" class="form-label">教师评分</label>
-                                                    <input type="number" class="form-control" id="project1-teacher" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project1-teacher" min="0" max="100">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project1-enterprise" class="form-label">企业评分</label>
-                                                    <input type="number" class="form-control" id="project1-enterprise" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project1-enterprise" min="0" max="100">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project1-group" class="form-label">小组评分</label>
-                                                    <input type="number" class="form-control" id="project1-group" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project1-group" min="0" max="100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="project1-count" class="form-label">实验次数</label>
+                                                    <input type="number" class="form-control" id="project1-count" min="0">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="project1-time" class="form-label">实验完成时间(分钟)</label>
+                                                    <input type="number" class="form-control" id="project1-time" min="0">
                                                 </div>
                                             </div>
                                         </div>
@@ -631,19 +656,33 @@ function generateGradeEntryContent() {
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project2-teacher" class="form-label">教师评分</label>
-                                                    <input type="number" class="form-control" id="project2-teacher" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project2-teacher" min="0" max="100">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project2-enterprise" class="form-label">企业评分</label>
-                                                    <input type="number" class="form-control" id="project2-enterprise" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project2-enterprise" min="0" max="100">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project2-group" class="form-label">小组评分</label>
-                                                    <input type="number" class="form-control" id="project2-group" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project2-group" min="0" max="100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="project2-count" class="form-label">实验次数</label>
+                                                    <input type="number" class="form-control" id="project2-count" min="0">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="project2-time" class="form-label">实验完成时间(分钟)</label>
+                                                    <input type="number" class="form-control" id="project2-time" min="0">
                                                 </div>
                                             </div>
                                         </div>
@@ -664,19 +703,33 @@ function generateGradeEntryContent() {
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project3-teacher" class="form-label">教师评分</label>
-                                                    <input type="number" class="form-control" id="project3-teacher" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project3-teacher" min="0" max="100">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project3-enterprise" class="form-label">企业评分</label>
-                                                    <input type="number" class="form-control" id="project3-enterprise" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project3-enterprise" min="0" max="100">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project3-group" class="form-label">小组评分</label>
-                                                    <input type="number" class="form-control" id="project3-group" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project3-group" min="0" max="100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="project3-count" class="form-label">实验次数</label>
+                                                    <input type="number" class="form-control" id="project3-count" min="0">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="project3-time" class="form-label">实验完成时间(分钟)</label>
+                                                    <input type="number" class="form-control" id="project3-time" min="0">
                                                 </div>
                                             </div>
                                         </div>
@@ -697,19 +750,33 @@ function generateGradeEntryContent() {
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project4-teacher" class="form-label">教师评分</label>
-                                                    <input type="number" class="form-control" id="project4-teacher" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project4-teacher" min="0" max="100">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project4-enterprise" class="form-label">企业评分</label>
-                                                    <input type="number" class="form-control" id="project4-enterprise" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project4-enterprise" min="0" max="100">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project4-group" class="form-label">小组评分</label>
-                                                    <input type="number" class="form-control" id="project4-group" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project4-group" min="0" max="100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="project4-count" class="form-label">实验次数</label>
+                                                    <input type="number" class="form-control" id="project4-count" min="0">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="project4-time" class="form-label">实验完成时间(分钟)</label>
+                                                    <input type="number" class="form-control" id="project4-time" min="0">
                                                 </div>
                                             </div>
                                         </div>
@@ -730,19 +797,33 @@ function generateGradeEntryContent() {
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project5-teacher" class="form-label">教师评分</label>
-                                                    <input type="number" class="form-control" id="project5-teacher" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project5-teacher" min="0" max="100">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project5-enterprise" class="form-label">企业评分</label>
-                                                    <input type="number" class="form-control" id="project5-enterprise" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project5-enterprise" min="0" max="100">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project5-group" class="form-label">小组评分</label>
-                                                    <input type="number" class="form-control" id="project5-group" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project5-group" min="0" max="100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="project5-count" class="form-label">实验次数</label>
+                                                    <input type="number" class="form-control" id="project5-count" min="0">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="project5-time" class="form-label">实验完成时间(分钟)</label>
+                                                    <input type="number" class="form-control" id="project5-time" min="0">
                                                 </div>
                                             </div>
                                         </div>
@@ -763,19 +844,33 @@ function generateGradeEntryContent() {
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project6-teacher" class="form-label">教师评分</label>
-                                                    <input type="number" class="form-control" id="project6-teacher" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project6-teacher" min="0" max="100">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project6-enterprise" class="form-label">企业评分</label>
-                                                    <input type="number" class="form-control" id="project6-enterprise" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project6-enterprise" min="0" max="100">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="project6-group" class="form-label">小组评分</label>
-                                                    <input type="number" class="form-control" id="project6-group" min="0" max="100" required>
+                                                    <input type="number" class="form-control" id="project6-group" min="0" max="100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="project6-count" class="form-label">实验次数</label>
+                                                    <input type="number" class="form-control" id="project6-count" min="0">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="project6-time" class="form-label">实验完成时间(分钟)</label>
+                                                    <input type="number" class="form-control" id="project6-time" min="0">
                                                 </div>
                                             </div>
                                         </div>
@@ -850,18 +945,6 @@ function generateGradeEntryContent() {
                                 <div class="mb-3">
                                     <label for="unit-mapping" class="form-label">专题制图</label>
                                     <input type="number" class="form-control" id="unit-mapping" min="0" max="100" required>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label for="resource-usage" class="form-label">学习资源使用次数</label>
-                                    <input type="number" class="form-control" id="resource-usage" min="0" required>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label for="experiment-time" class="form-label">实验完成时间 (分钟)</label>
-                                    <input type="number" class="form-control" id="experiment-time" min="0" required>
                                 </div>
                             </div>
                         </div>
@@ -1009,6 +1092,8 @@ function generateGradeQueryContent() {
         </div>
     `;
 }
+
+
 // 生成成绩分析内容
 function generateGradeAnalysisContent() {
     return `
@@ -1047,85 +1132,91 @@ function generateGradeAnalysisContent() {
                 </div>
             </div>
             
-            <!-- 原有的图表 -->
             <div class="row charts-row">
-                <div class="col-lg-6">
-                    <div class="card mb-4 h-100">
-                        <div class="card-header">
-                            综合素质评价 (雷达图)
+                <!-- 雷达图 -->
+                <div class="col-md-6">
+                    <div class="card mb-4 h-100 chart-card">
+                        <div class="card-header bg-light">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-bullseye me-2 text-primary"></i>
+                                <span class="fw-bold">综合素质评价</span>
+                                <span class="text-muted ms-auto small">八维能力雷达分析</span>
+                            </div>
                         </div>
-                        <div class="card-body d-flex align-items-center justify-content-center">
-                            <div class="chart-container">
+                        <div class="card-body">
+                            <div class="chart-container" id="radar-chart-container">
                                 <canvas id="radar-chart"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="card mb-4 h-100">
-                        <div class="card-header">
-                            成绩构成比例 (饼图)
-                        </div>
-                        <div class="card-body d-flex align-items-center justify-content-center">
-                            <div class="chart-container">
-                                <canvas id="pie-chart"></canvas>
+                
+                <!-- 折线图 -->
+                <div class="col-md-6">
+                    <div class="card mb-4 h-100 chart-card">
+                        <div class="card-header bg-light">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-graph-up me-2 text-success"></i>
+                                <span class="fw-bold">单元成绩情况</span>
+                                <span class="text-muted ms-auto small">10个学习单元成绩</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row charts-row">
-                <div class="col-lg-6">
-                    <div class="card mb-4 h-100">
-                        <div class="card-header">
-                            单元成绩 (折线图)
-                        </div>
-                        <div class="card-body d-flex align-items-center justify-content-center">
-                            <div class="chart-container">
+                        <div class="card-body">
+                            <div class="chart-container" id="line-chart-container">
                                 <canvas id="line-chart"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="card mb-4 h-100">
-                        <div class="card-header">
-                            学习资源使用情况 (直方图)
-                        </div>
-                        <div class="card-body d-flex align-items-center justify-content-center">
-                            <div class="chart-container">
-                                <canvas id="histogram-chart"></canvas>
+                
+                <!-- 项目成绩直方图 -->
+                <div class="col-md-6">
+                    <div class="card mb-4 h-100 chart-card">
+                        <div class="card-header bg-light">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-bar-chart-fill me-2 text-warning"></i>
+                                <span class="fw-bold">项目成绩组成</span>
+                                <span class="text-muted ms-auto small">教师/企业/小组评分构成</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 新增项目成绩分析图表 -->
-            <div class="row charts-row">
-                <div class="col-lg-6">
-                    <div class="card mb-4 h-100">
-                        <div class="card-header">
-                            项目成绩组成 (堆叠柱状图)
-                        </div>
-                        <div class="card-body d-flex align-items-center justify-content-center">
-                            <div class="chart-container">
+                        <div class="card-body">
+                            <div class="chart-container" id="project-histogram-chart-container">
                                 <canvas id="project-histogram-chart"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="card mb-4 h-100">
-                        <div class="card-header">
-                            项目成绩 (气泡图)
+                
+                <!-- 项目成绩气泡图 -->
+                <div class="col-md-6">
+                    <div class="card mb-4 h-100 chart-card">
+                        <div class="card-header bg-light">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-diagram-3 me-2 text-danger"></i>
+                                <span class="fw-bold">项目实验分析</span>
+                                <span class="text-muted ms-auto small">实验次数/时间/成绩关联</span>
+                            </div>
                         </div>
-                        <div class="card-body d-flex align-items-center justify-content-center">
-                            <div class="chart-container">
+                        <div class="card-body">
+                            <div class="chart-container" id="project-bubble-chart-container">
                                 <canvas id="project-bubble-chart"></canvas>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 成绩详情模态框 -->
+        <div class="modal fade" id="gradeDetailModal" tabindex="-1" aria-labelledby="gradeDetailModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="gradeDetailModalLabel">成绩详情</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="grade-detail-content">
+                        <!-- 成绩详情内容将动态加载 -->
                     </div>
                 </div>
             </div>
@@ -1321,7 +1412,7 @@ function initDashboard() {
     drawClassScoresChart();
 
     // 绘制成绩趋势分析图表
-    drawScoreTrendChart();
+    // drawScoreTrendChart();
 }
 
 // 更新仪表盘统计数据
