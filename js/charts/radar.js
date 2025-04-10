@@ -49,7 +49,10 @@ function createRadarChart(studentId) {
                             display: true
                         },
                         suggestedMin: 0,
-                        suggestedMax: 5
+                        suggestedMax: 10,
+                        ticks: {
+                            stepSize: 2    // 添加刻度间隔为2
+                        }
                     }
                 },
                 plugins: {
@@ -120,7 +123,10 @@ function createRadarChart(studentId) {
                         display: true
                     },
                     suggestedMin: 0,
-                    suggestedMax: 5
+                    suggestedMax: 10,
+                    ticks: {
+                        stepSize: 2    // 添加刻度间隔为2
+                    }
                 }
             },
             plugins: {
@@ -259,7 +265,10 @@ function createClassRadarChart(className) {
                             display: true
                         },
                         suggestedMin: 0,
-                        suggestedMax: 5
+                        suggestedMax: 10,
+                        ticks: {
+                            stepSize: 2    // 添加刻度间隔为2
+                        }
                     }
                 },
                 plugins: {
@@ -335,7 +344,10 @@ function createClassRadarChart(className) {
                         display: true
                     },
                     suggestedMin: 0,
-                    suggestedMax: 5
+                    suggestedMax: 10,
+                    ticks: {
+                        stepSize: 2    // 添加刻度间隔为2
+                    }
                 }
             },
             plugins: {

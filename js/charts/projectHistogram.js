@@ -17,9 +17,9 @@ function createProjectHistogram(studentId) {
         projectLabels.push(`项目${i}`);
 
         if (grade.projects[projectKey]) {
-            teacherScores.push(grade.projects[projectKey].teacher || 0);
-            enterpriseScores.push(grade.projects[projectKey].enterprise || 0);
-            groupScores.push(grade.projects[projectKey].group || 0);
+            teacherScores.push(grade.projects[projectKey].teacher * 0.4 || 0);
+            enterpriseScores.push(grade.projects[projectKey].enterprise * 0.4 || 0);
+            groupScores.push(grade.projects[projectKey].group * 0.2 || 0);
         } else {
             teacherScores.push(0);
             enterpriseScores.push(0);
@@ -142,9 +142,9 @@ function createClassProjectHistogram(className) {
             for (let i = 1; i <= 6; i++) {
                 const projectKey = `project${i}`;
                 if (grade.projects[projectKey]) {
-                    avgTeacherScores[i - 1] += grade.projects[projectKey].teacher || 0;
-                    avgEnterpriseScores[i - 1] += grade.projects[projectKey].enterprise || 0;
-                    avgGroupScores[i - 1] += grade.projects[projectKey].group || 0;
+                    avgTeacherScores[i - 1] += grade.projects[projectKey].teacher * 0.4 || 0;
+                    avgEnterpriseScores[i - 1] += grade.projects[projectKey].enterprise * 0.4 || 0;
+                    avgGroupScores[i - 1] += grade.projects[projectKey].group * 0.2 || 0;
                 }
             }
         }

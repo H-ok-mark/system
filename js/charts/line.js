@@ -28,7 +28,7 @@ function createLineChart(studentId) {
                     },
                     title: {
                         display: true,
-                        text: '单元成绩 - 暂无数据',
+                        text: '模块化技能成绩 - 暂无数据',
                         font: {
                             size: 16
                         }
@@ -71,7 +71,7 @@ function createLineChart(studentId) {
     const data = {
         labels: labels,
         datasets: [{
-            label: '单元成绩',
+            label: '成绩折线',
             data: unitScores,
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
@@ -89,6 +89,7 @@ function createLineChart(studentId) {
         scales: {
             y: {
                 beginAtZero: true,
+                min: 40,
                 max: 100,
                 title: {
                     display: true,
@@ -105,7 +106,7 @@ function createLineChart(studentId) {
         plugins: {
             title: {
                 display: true,
-                text: '单元成绩分布',
+                text: '模块化技能成绩',
                 font: {
                     size: 16
                 }
@@ -155,7 +156,7 @@ function createClassLineChart(className) {
                 plugins: {
                     title: {
                         display: true,
-                        text: '班级单元成绩 - 暂无数据',
+                        text: '班级模块化技能成绩 - 暂无数据',
                         font: {
                             size: 16
                         }
@@ -191,7 +192,7 @@ function createClassLineChart(className) {
                 plugins: {
                     title: {
                         display: true,
-                        text: '班级单元成绩 - 暂无数据',
+                        text: '班级模块化技能成绩 - 暂无数据',
                         font: {
                             size: 16
                         }
@@ -240,7 +241,7 @@ function createClassLineChart(className) {
     const data = {
         labels: labels,
         datasets: [{
-            label: '班级平均',
+            label: '班级平均成绩折线',
             data: unitAvgScores,
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
@@ -258,6 +259,7 @@ function createClassLineChart(className) {
         scales: {
             y: {
                 beginAtZero: true,
+                min: 40,
                 max: 100,
                 title: {
                     display: true,
@@ -274,7 +276,7 @@ function createClassLineChart(className) {
         plugins: {
             title: {
                 display: true,
-                text: `${className} - 班级单元成绩分布`,
+                text: `${className} - 班级模块化技能成绩`,
                 font: {
                     size: 16
                 }

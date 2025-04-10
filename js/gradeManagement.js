@@ -85,34 +85,31 @@ function initGradeEntry() {
         const gradeData = {
             studentId: selectedStudentId,
             // 成绩比例
-            usual: parseFloat(document.getElementById('grade-usual').value),
-            theory: parseFloat(document.getElementById('grade-theory').value),
-            practical: parseFloat(document.getElementById('grade-practical').value),
-            final: parseFloat(document.getElementById('grade-final').value),
-            // 单元成绩
-            unitBasic: parseFloat(document.getElementById('unit-basic').value),
-            unitDrone: parseFloat(document.getElementById('unit-drone').value),
-            unitGeometric: parseFloat(document.getElementById('unit-geometric').value),
-            unitRadiometric: parseFloat(document.getElementById('unit-radiometric').value),
-            unitRegistration: parseFloat(document.getElementById('unit-registration').value),
-            unitVisual: parseFloat(document.getElementById('unit-visual').value),
-            unitChange: parseFloat(document.getElementById('unit-change').value),
-            unitClassification: parseFloat(document.getElementById('unit-classification').value),
-            unitAccuracy: parseFloat(document.getElementById('unit-accuracy').value),
-            unitMapping: parseFloat(document.getElementById('unit-mapping').value),
-            // // 学习资源使用情况
-            // resourceUsage: parseInt(document.getElementById('resource-usage').value),
-            // experimentTime: parseInt(document.getElementById('experiment-time').value),
+            usual: parseFloat(document.getElementById('grade-usual').value) || 0,
+            practical: parseFloat(document.getElementById('grade-practical').value) || 0,
+            final: parseFloat(document.getElementById('grade-final').value) || 0,
 
-            // 综合素质评价
-            qualityTheory: parseInt(document.getElementById('quality-theory').value),
-            qualityDrone: parseInt(document.getElementById('quality-drone').value),
-            qualitySoftware: parseInt(document.getElementById('quality-software').value),
-            qualityInterpretation: parseInt(document.getElementById('quality-interpretation').value),
-            qualityWorkflow: parseInt(document.getElementById('quality-workflow').value),
-            qualityTeamwork: parseInt(document.getElementById('quality-teamwork').value),
-            qualitySelfLearning: parseInt(document.getElementById('quality-self-learning').value),
-            qualityEthics: parseInt(document.getElementById('quality-ethics').value),
+            // 单元成绩 - 非必填
+            unitBasic: parseFloat(document.getElementById('unit-basic').value) || 0,
+            unitDrone: parseFloat(document.getElementById('unit-drone').value) || 0,
+            unitGeometric: parseFloat(document.getElementById('unit-geometric').value) || 0,
+            unitRadiometric: parseFloat(document.getElementById('unit-radiometric').value) || 0,
+            unitRegistration: parseFloat(document.getElementById('unit-registration').value) || 0,
+            unitVisual: parseFloat(document.getElementById('unit-visual').value) || 0,
+            unitChange: parseFloat(document.getElementById('unit-change').value) || 0,
+            unitClassification: parseFloat(document.getElementById('unit-classification').value) || 0,
+            unitAccuracy: parseFloat(document.getElementById('unit-accuracy').value) || 0,
+            unitMapping: parseFloat(document.getElementById('unit-mapping').value) || 0,
+
+            // 综合素质评价 - 非必填(1-10分)
+            qualityTheory: parseInt(document.getElementById('quality-theory').value) || 0,
+            qualityDrone: parseInt(document.getElementById('quality-drone').value) || 0,
+            qualitySoftware: parseInt(document.getElementById('quality-software').value) || 0,
+            qualityInterpretation: parseInt(document.getElementById('quality-interpretation').value) || 0,
+            qualityWorkflow: parseInt(document.getElementById('quality-workflow').value) || 0,
+            qualityTeamwork: parseInt(document.getElementById('quality-teamwork').value) || 0,
+            qualitySelfLearning: parseInt(document.getElementById('quality-self-learning').value) || 0,
+            qualityEthics: parseInt(document.getElementById('quality-ethics').value) || 0,
 
             // 项目成绩
             projects: {
@@ -172,7 +169,6 @@ function initGradeEntry() {
 function fillGradeForm(grade) {
     // 成绩比例
     document.getElementById('grade-usual').value = grade.usual || '';
-    document.getElementById('grade-theory').value = grade.theory || '';
     document.getElementById('grade-practical').value = grade.practical || '';
     document.getElementById('grade-final').value = grade.final || '';
 
@@ -333,7 +329,6 @@ function initGradeQuery() {
                 <td>${student.name}</td>
                 <td>${student.class}</td>
                 <td>${grade ? grade.usual : '未录入'}</td>
-                <td>${grade ? grade.theory : '未录入'}</td>
                 <td>${grade ? grade.practical : '未录入'}</td>
                 <td>${grade ? grade.final : '未录入'}</td>
                 <td>${grade ? totalScore.toFixed(1) : '未录入'}</td>
@@ -501,7 +496,7 @@ function showGradeDetail(studentId) {
     const qualityHtml = `
         <div class="row mt-4">
             <div class="col-md-12">
-                <h5 class="border-bottom pb-2 mb-3">综合素质评价 (1-5分)</h5>
+                <h5 class="border-bottom pb-2 mb-3">综合素质评价 (1-10分)</h5>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-2 d-flex justify-content-between">
@@ -565,8 +560,7 @@ function showGradeDetail(studentId) {
                                 </span>
                             </h5>
                             <p><strong>平时成绩(20%)：</strong>${grade.usual || 0}分</p>
-                            <p><strong>理论成绩(30%)：</strong>${grade.theory || 0}分</p>
-                            <p><strong>实践成绩(20%)：</strong>${grade.practical || 0}分</p>
+                            <p><strong>实践成绩(50%)：</strong>${grade.practical || 0}分</p>
                             <p><strong>期末成绩(30%)：</strong>${grade.final || 0}分</p>
                         </div>
                     </div>
@@ -729,11 +723,9 @@ function populateClassSelector(selector) {
 // 计算总成绩
 function calculateTotalScore(grade) {
     const usual = grade.usual * 0.2;
-    const theory = grade.theory * 0.3;
-    const practical = grade.practical * 0.2;
+    const practical = grade.practical * 0.5;
     const final = grade.final * 0.3;
-
-    return usual + theory + practical + final;
+    return usual + practical + final;
 }
 
 // 添加计算项目成绩的函数

@@ -392,7 +392,7 @@ function generateClassManagementContent() {
                             <input type="hidden" id="class-id">
                             <div class="mb-3">
                                 <label for="class-name" class="form-label">班级名称</label>
-                                <input type="text" class="form-control" id="class-name" required>
+                                <input type="text" class="form-control" id="class-name">
                             </div>
                         </form>
                     </div>
@@ -481,11 +481,11 @@ function generateStudentInfoContent() {
                                 <div class="col-md-8">
                                     <div class="mb-3">
                                         <label for="student-id" class="form-label">学号</label>
-                                        <input type="text" class="form-control" id="student-id" required>
+                                        <input type="text" class="form-control" id="student-id">
                                     </div>
                                     <div class="mb-3">
                                         <label for="student-name" class="form-label">姓名</label>
-                                        <input type="text" class="form-control" id="student-name" required>
+                                        <input type="text" class="form-control" id="student-name">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">性别</label>
@@ -502,7 +502,7 @@ function generateStudentInfoContent() {
                                     </div>
                                     <div class="mb-3">
                                         <label for="student-class" class="form-label">班级</label>
-                                        <select class="form-select" id="student-class" required>
+                                        <select class="form-select" id="student-class">
                                             <!-- 班级选项将在这里动态生成 -->
                                         </select>
                                     </div>
@@ -569,28 +569,22 @@ function generateGradeEntryContent() {
                 <div class="card-body">
                     <form id="grade-entry-form">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="grade-usual" class="form-label">平时成绩 (20%)</label>
-                                    <input type="number" class="form-control" id="grade-usual" min="0" max="100" required>
+                                    <input type="number" class="form-control" id="grade-usual" min="0" max="100">
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="grade-theory" class="form-label">理论成绩 (30%)</label>
-                                    <input type="number" class="form-control" id="grade-theory" min="0" max="100" required>
+                                    <label for="grade-practical" class="form-label">实践成绩 (50%)</label>
+                                    <input type="number" class="form-control" id="grade-practical" min="0" max="100">
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="grade-practical" class="form-label">实践成绩 (20%)</label>
-                                    <input type="number" class="form-control" id="grade-practical" min="0" max="100" required>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="grade-final" class="form-label">期末成绩 (30%)</label>
-                                    <input type="number" class="form-control" id="grade-final" min="0" max="100" required>
+                                    <input type="number" class="form-control" id="grade-final" min="0" max="100">
                                 </div>
                             </div>
                         </div>
@@ -609,19 +603,19 @@ function generateGradeEntryContent() {
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3">
-                                                    <label for="project1-teacher" class="form-label">教师评分</label>
+                                                    <label for="project1-teacher" class="form-label">教师评分 (40%)</label>
                                                     <input type="number" class="form-control" id="project1-teacher" min="0" max="100">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
-                                                    <label for="project1-enterprise" class="form-label">企业评分</label>
+                                                    <label for="project1-enterprise" class="form-label">企业评分 (40%)</label>
                                                     <input type="number" class="form-control" id="project1-enterprise" min="0" max="100">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
-                                                    <label for="project1-group" class="form-label">小组评分</label>
+                                                    <label for="project1-group" class="form-label">小组评分 (20%)</label>
                                                     <input type="number" class="form-control" id="project1-group" min="0" max="100">
                                                 </div>
                                             </div>
@@ -885,19 +879,19 @@ function generateGradeEntryContent() {
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="unit-basic" class="form-label">遥感基础知识</label>
-                                    <input type="number" class="form-control" id="unit-basic" min="0" max="100" required>
+                                    <input type="number" class="form-control" id="unit-basic" min="0" max="100" >
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="unit-drone" class="form-label">无人机数据获取遥感</label>
-                                    <input type="number" class="form-control" id="unit-drone" min="0" max="100" required>
+                                    <input type="number" class="form-control" id="unit-drone" min="0" max="100" >
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="unit-geometric" class="form-label">几何校正</label>
-                                    <input type="number" class="form-control" id="unit-geometric" min="0" max="100" required>
+                                    <input type="number" class="form-control" id="unit-geometric" min="0" max="100">
                                 </div>
                             </div>
                         </div>
@@ -905,19 +899,19 @@ function generateGradeEntryContent() {
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="unit-radiometric" class="form-label">辐射校正</label>
-                                    <input type="number" class="form-control" id="unit-radiometric" min="0" max="100" required>
+                                    <input type="number" class="form-control" id="unit-radiometric" min="0" max="100">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="unit-registration" class="form-label">图像配准</label>
-                                    <input type="number" class="form-control" id="unit-registration" min="0" max="100" required>
+                                    <input type="number" class="form-control" id="unit-registration" min="0" max="100">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="unit-visual" class="form-label">目视解译</label>
-                                    <input type="number" class="form-control" id="unit-visual" min="0" max="100" required>
+                                    <input type="number" class="form-control" id="unit-visual" min="0" max="100">
                                 </div>
                             </div>
                         </div>
@@ -925,19 +919,19 @@ function generateGradeEntryContent() {
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="unit-change" class="form-label">变化监测</label>
-                                    <input type="number" class="form-control" id="unit-change" min="0" max="100" required>
+                                    <input type="number" class="form-control" id="unit-change" min="0" max="100">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="unit-classification" class="form-label">图像分类</label>
-                                    <input type="number" class="form-control" id="unit-classification" min="0" max="100" required>
+                                    <input type="number" class="form-control" id="unit-classification" min="0" max="100">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="unit-accuracy" class="form-label">精度评价</label>
-                                    <input type="number" class="form-control" id="unit-accuracy" min="0" max="100" required>
+                                    <input type="number" class="form-control" id="unit-accuracy" min="0" max="100">
                                 </div>
                             </div>
                         </div>
@@ -945,64 +939,65 @@ function generateGradeEntryContent() {
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="unit-mapping" class="form-label">专题制图</label>
-                                    <input type="number" class="form-control" id="unit-mapping" min="0" max="100" required>
+                                    <input type="number" class="form-control" id="unit-mapping" min="0" max="100">
                                 </div>
                             </div>
                         </div>
                         
-                        <h5 class="mt-4 mb-3">综合素质评价 (1-5分)</h5>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="quality-theory" class="form-label">卫星遥感基础理论</label>
-                                    <input type="number" class="form-control" id="quality-theory" min="1" max="5" required>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="quality-drone" class="form-label">无人机遥感知识</label>
-                                    <input type="number" class="form-control" id="quality-drone" min="1" max="5" required>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="quality-software" class="form-label">软件操作技能</label>
-                                    <input type="number" class="form-control" id="quality-software" min="1" max="5" required>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="quality-interpretation" class="form-label">影像解译能力</label>
-                                    <input type="number" class="form-control" id="quality-interpretation" min="1" max="5" required>
-                                </div>
+                    <h5 class="mt-4 mb-3">综合素质评价 (1-10分)</h5>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="quality-theory" class="form-label">卫星遥感基础理论</label>
+                                <input type="number" class="form-control" id="quality-theory" min="1" max="10">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="quality-workflow" class="form-label">规范化技术流程</label>
-                                    <input type="number" class="form-control" id="quality-workflow" min="1" max="5" required>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="quality-teamwork" class="form-label">团队协作</label>
-                                    <input type="number" class="form-control" id="quality-teamwork" min="1" max="5" required>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="quality-self-learning" class="form-label">自学能力</label>
-                                    <input type="number" class="form-control" id="quality-self-learning" min="1" max="5" required>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="quality-ethics" class="form-label">职业道德</label>
-                                    <input type="number" class="form-control" id="quality-ethics" min="1" max="5" required>
-                                </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="quality-drone" class="form-label">无人机遥感知识</label>
+                                <input type="number" class="form-control" id="quality-drone" min="1" max="10">
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="quality-software" class="form-label">软件操作技能</label>
+                                <input type="number" class="form-control" id="quality-software" min="1" max="10">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="quality-interpretation" class="form-label">影像解译能力</label>
+                                <input type="number" class="form-control" id="quality-interpretation" min="1" max="10">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="quality-workflow" class="form-label">规范化技术流程</label>
+                                <input type="number" class="form-control" id="quality-workflow" min="1" max="10">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="quality-teamwork" class="form-label">团队协作</label>
+                                <input type="number" class="form-control" id="quality-teamwork" min="1" max="10">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="quality-self-learning" class="form-label">自学能力</label>
+                                <input type="number" class="form-control" id="quality-self-learning" min="1" max="10">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="quality-ethics" class="form-label">职业道德</label>
+                                <input type="number" class="form-control" id="quality-ethics" min="1" max="10">
+                            </div>
+                        </div>
+                    </div>
+                        
                         
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
                             <button type="button" class="btn btn-secondary" id="reset-grade-btn">重置</button>
@@ -1058,7 +1053,6 @@ function generateGradeQueryContent() {
                                     <th>姓名</th>
                                     <th>班级</th>
                                     <th>平时成绩</th>
-                                    <th>理论成绩</th>
                                     <th>实践成绩</th>
                                     <th>期末成绩</th>
                                     <th>总评</th>
@@ -1158,8 +1152,8 @@ function generateGradeAnalysisContent() {
                         <div class="card-header bg-light">
                             <div class="d-flex align-items-center">
                                 <i class="bi bi-graph-up me-2 text-success"></i>
-                                <span class="fw-bold">单元成绩情况</span>
-                                <span class="text-muted ms-auto small">10个学习单元成绩</span>
+                                <span class="fw-bold">模块化技能成绩</span>
+                                <span class="text-muted ms-auto small">项目模块</span>
                             </div>
                         </div>
                         <div class="card-body">
@@ -1238,7 +1232,7 @@ function generatePersonalInfoContent() {
                             <div class="col-md-8">
                                 <div class="mb-3">
                                     <label for="teacher-name" class="form-label">姓名</label>
-                                    <input type="text" class="form-control" id="teacher-name" value="张教师" required>
+                                    <input type="text" class="form-control" id="teacher-name" value="张教师">
                                 </div>
                                 <div class="mb-3">
                                     <label for="teacher-id" class="form-label">工号</label>
@@ -1298,15 +1292,15 @@ function generateChangePasswordContent() {
                     <form id="change-password-form">
                         <div class="mb-3">
                             <label for="current-password" class="form-label">当前密码</label>
-                            <input type="password" class="form-control" id="current-password" required>
+                            <input type="password" class="form-control" id="current-password">
                         </div>
                         <div class="mb-3">
                             <label for="new-password" class="form-label">新密码</label>
-                            <input type="password" class="form-control" id="new-password" required>
+                            <input type="password" class="form-control" id="new-password">
                         </div>
                         <div class="mb-3">
                             <label for="confirm-password" class="form-label">确认新密码</label>
-                            <input type="password" class="form-control" id="confirm-password" required>
+                            <input type="password" class="form-control" id="confirm-password">
                         </div>
                         
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
@@ -1526,10 +1520,9 @@ function drawScoreTrendChart() {
 
 // 计算总成绩
 function calculateTotalScore(grade) {
-    const usual = grade.usual * 0.2;
-    const theory = grade.theory * 0.3;
-    const practical = grade.practical * 0.2;
-    const final = grade.final * 0.3;
+    const usual = grade.usual * 0.2;      // 平时成绩占20%
+    const practical = grade.practical * 0.5;  // 实践成绩占50%
+    const final = grade.final * 0.3;      // 期末成绩占30%
 
-    return usual + theory + practical + final;
+    return usual + practical + final;
 }

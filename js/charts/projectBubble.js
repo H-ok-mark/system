@@ -38,7 +38,7 @@ function createProjectBubble(studentId) {
             const experimentTime = project.experimentTime || 0;
 
             // 计算总分 
-            const total = teacher + enterprise + group;
+            const total = (teacher * 0.4) + (enterprise * 0.4) + (group * 0.2);
 
             // 添加数据点
             // 横坐标为实验完成时间，纵坐标为实验次数，气泡大小为总分/3
@@ -125,7 +125,7 @@ function createProjectBubble(studentId) {
                 y: {
                     beginAtZero: true,
                     min: 0,
-                    max: 6,
+                    max: 8,
                     ticks: {
                         stepSize: 1
                     },
@@ -143,7 +143,7 @@ function createProjectBubble(studentId) {
                         size: 16
                     },
                     padding: {
-                        top: 10, // 减少标题顶部padding
+                        top: 10,
                         bottom: 10
                     }
                 },
@@ -167,7 +167,17 @@ function createProjectBubble(studentId) {
                 },
                 legend: {
                     display: true,
-                    position: 'bottom'
+                    position: 'bottom',
+                    labels: {
+                        boxWidth: 12,      // 减小图例颜色框宽度
+                        boxHeight: 12,     // 减小图例颜色框高度
+                        padding: 8,        // 减小图例项之间的间距
+                        font: {
+                            size: 11       // 减小图例文字大小
+                        }
+                    },
+                    maxHeight: 40,         // 限制图例最大高度
+                    maxWidth: 400          // 限制图例最大宽度
                 }
             }
         }
@@ -218,7 +228,7 @@ function createClassProjectBubble(className) {
                         projectData[i - 1].teacherScore += teacher;
                         projectData[i - 1].enterpriseScore += enterprise;
                         projectData[i - 1].groupScore += group;
-                        projectData[i - 1].total += teacher + enterprise + group;
+                        projectData[i - 1].total += (teacher * 0.4) + (enterprise * 0.4) + (group * 0.2);
                         projectData[i - 1].count++;
                     }
                 }
@@ -333,7 +343,7 @@ function createClassProjectBubble(className) {
                 y: {
                     beginAtZero: true,
                     min: 0,
-                    max: 6,
+                    max: 8,
                     ticks: {
                         stepSize: 1
                     },
@@ -376,7 +386,17 @@ function createClassProjectBubble(className) {
                 },
                 legend: {
                     display: true,
-                    position: 'bottom'
+                    position: 'bottom',
+                    labels: {
+                        boxWidth: 12,      // 减小图例颜色框宽度
+                        boxHeight: 12,     // 减小图例颜色框高度
+                        padding: 8,        // 减小图例项之间的间距
+                        font: {
+                            size: 11       // 减小图例文字大小
+                        }
+                    },
+                    maxHeight: 40,         // 限制图例最大高度
+                    maxWidth: 400          // 限制图例最大宽度
                 }
             }
         }
