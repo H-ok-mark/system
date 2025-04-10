@@ -99,7 +99,7 @@ function createProjectHistogram(studentId) {
                         // 自定义提示信息
                         label: function (context) {
                             const datasetLabel = context.dataset.label || '';
-                            const value = context.parsed.y;
+                            const value = context.parsed.y.toFixed(1);  // 添加toFixed(1)格式化为1位小数
                             return `${datasetLabel}: ${value}分`;
                         }
                     }
@@ -230,7 +230,7 @@ function createClassProjectHistogram(className) {
                     callbacks: {
                         label: function (context) {
                             const datasetLabel = context.dataset.label || '';
-                            const value = context.parsed.y.toFixed(1);
+                            const value = context.parsed.y.toFixed(1);  // 添加toFixed(1)格式化为1位小数
                             return `${datasetLabel}: ${value}分`;
                         }
                     }
