@@ -27,7 +27,7 @@ function initSystemManagement() {
     if (exportDataBtn) {
         exportDataBtn.addEventListener('click', function () {
             const data = exportAllData();
-            downloadJSON(data, '考核评价系统数据.json');
+            downloadJSON(data, '遥感原理与应用考核评价系统数据.json');
         });
     }
 
