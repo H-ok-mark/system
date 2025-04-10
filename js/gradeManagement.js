@@ -738,10 +738,10 @@ function calculateTotalScore(grade) {
 
 // 添加计算项目成绩的函数
 function calculateProjectScore(project) {
-    // 默认计算方式：教师评分40%，企业评分30%，小组评分30%
+    // 调整权重配比：教师评分40%，企业评分40%，小组评分20%
     const teacherScore = (project.teacher || 0) * 0.4;
-    const enterpriseScore = (project.enterprise || 0) * 0.3;
-    const groupScore = (project.group || 0) * 0.3;
+    const enterpriseScore = (project.enterprise || 0) * 0.4;
+    const groupScore = (project.group || 0) * 0.2;
 
     return teacherScore + enterpriseScore + groupScore;
 }
