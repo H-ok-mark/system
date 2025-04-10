@@ -71,7 +71,7 @@ function createLineChart(studentId) {
     const data = {
         labels: labels,
         datasets: [{
-            label: '成绩折线',
+            label: '成绩',
             data: unitScores,
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
@@ -241,7 +241,7 @@ function createClassLineChart(className) {
     const data = {
         labels: labels,
         datasets: [{
-            label: '班级平均成绩折线',
+            label: '班级平均成绩',
             data: unitAvgScores,
             fill: false,
             borderColor: 'rgb(75, 192, 192)',

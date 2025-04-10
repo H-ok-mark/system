@@ -79,13 +79,22 @@ function showChartInModal(canvas) {
     // 获取模态框中的canvas
     const modalCanvas = document.getElementById('modal-chart-canvas');
 
-    // 克隆原始图表配置
-    const modalConfig = JSON.parse(JSON.stringify({
+    // 克隆原始图表配置 (修改此处)
+    const modalConfig = {
         type: originalChart.config.type,
-        data: originalChart.config.data,
-        options: originalChart.config.options
-    }));
+        data: JSON.parse(JSON.stringify(originalChart.config.data)),
+        options: JSON.parse(JSON.stringify(originalChart.config.options))
+    };
 
+    // 特别处理tooltip回调函数，确保正确复制 (添加此段代码)
+    if (originalChart.config.options?.plugins?.tooltip?.callbacks?.label) {
+        if (!modalConfig.options.plugins) modalConfig.options.plugins = {};
+        if (!modalConfig.options.plugins.tooltip) modalConfig.options.plugins.tooltip = {};
+        if (!modalConfig.options.plugins.tooltip.callbacks) modalConfig.options.plugins.tooltip.callbacks = {};
+
+        // 直接复制原始回调函数，不进行JSON序列化
+        modalConfig.options.plugins.tooltip.callbacks.label = originalChart.config.options.plugins.tooltip.callbacks.label;
+    }
 
     // 特殊处理项目气泡图的颜色
     if (canvas.id === 'project-bubble-chart' && originalChart.chartColors && originalChart.chartBorderColors) {

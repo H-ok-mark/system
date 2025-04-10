@@ -156,11 +156,11 @@ function createProjectBubble(studentId) {
                             return [
                                 `${data.projectName}`,
                                 `总分: ${data.total.toFixed(1)} (${data.gradeLevel})`,
-                                `实验次数: ${data.y}次`,
-                                `完成时间: ${data.x}分钟`,
-                                `教师评分: ${data.teacherScore}`,
-                                `企业评分: ${data.enterpriseScore}`,
-                                `小组评分: ${data.groupScore}`
+                                `实验次数: ${data.y.toFixed(1)}次`,
+                                `完成时间: ${data.x.toFixed(1)}分钟`,
+                                `教师评分: ${data.teacherScore.toFixed(1)}`,
+                                `企业评分: ${data.enterpriseScore.toFixed(1)}`,
+                                `小组评分: ${data.groupScore.toFixed(1)}`
                             ];
                         }
                     }
