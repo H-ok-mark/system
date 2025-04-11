@@ -1351,6 +1351,9 @@ function generateSystemManagementContent() {
                         <button type="button" class="btn btn-success" id="import-data-btn">
                             <i class="bi bi-upload"></i> 导入数据
                         </button>
+                        <button type="button" class="btn btn-info" id="convert-data-btn">
+                            <i class="bi bi-arrow-repeat"></i> 数据转换
+                        </button>
                         <button type="button" class="btn btn-danger" id="clear-data-btn">
                             <i class="bi bi-trash"></i> 清空数据
                         </button>

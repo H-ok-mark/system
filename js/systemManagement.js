@@ -9,6 +9,8 @@ function initSystemManagement() {
     const exportDataBtn = document.getElementById('export-data-btn');
     const importDataBtn = document.getElementById('import-data-btn');
     const clearDataBtn = document.getElementById('clear-data-btn');
+    // 添加数据转换按钮
+    const convertDataBtn = document.getElementById('convert-data-btn');
 
     // 显示系统信息
     if (browserInfoElement) {
@@ -75,6 +77,15 @@ function initSystemManagement() {
                 alert('所有数据已清空，请刷新页面');
                 window.location.reload();
             }
+        });
+    }
+
+    // 添加数据转换功能
+    if (convertDataBtn) {
+        convertDataBtn.addEventListener('click', function () {
+            // 显示数据转换模态框
+            const convertModal = new bootstrap.Modal(document.getElementById('convertToolModal'));
+            convertModal.show();
         });
     }
 }

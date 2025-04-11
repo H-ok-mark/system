@@ -84,6 +84,26 @@
         </div>
     </div>
 
+    <!-- 数据转换工具模态框 -->
+    <div class="modal fade" id="convertToolModal" tabindex="-1" aria-labelledby="convertToolModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="convertToolModalLabel">数据转换工具</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>请将学生信息.json内容粘贴到下面的文本框：</p>
+                    <textarea id="studentData" class="form-control mb-3" style="height: 300px;"
+                        placeholder="粘贴学生信息.json内容..."></textarea>
+                    <button onclick="convertModalData()" class="btn btn-success">转换并下载</button>
+                    <div id="convertResult" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 引入JavaScript库 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -96,6 +116,7 @@
     <script src="js/gradeManagement.js"></script>
     <script src="js/teacherManagement.js"></script>
     <script src="js/systemManagement.js"></script>
+    <script src="js/dataConverter.js"></script> <!-- 添加数据转换脚本 -->
     <!-- 先加载图表配置文件 -->
     <script src="js/charts/chartConfig.js"></script>
     <!-- 然后加载各个图表文件 -->
